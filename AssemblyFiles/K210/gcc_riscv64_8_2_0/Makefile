@@ -1,4 +1,4 @@
-ifeq ($(OS), Windows_NT)
+﻿ifeq ($(OS), Windows_NT)
 	#WINDOWS USE THESE DEFINITIONS
 	RM = -del /q /f
 	MKDIR = mkdir
@@ -14,12 +14,12 @@ endif
 
 # source files.
 SRC = \
-..\..\..\SourceFiles\CBucketSort.c \
-..\..\..\SourceFiles\CBucketSortFactory.c
+..\..\..\SourceFiles\CEcoLab1.c \
+..\..\..\SourceFiles\CEcoLab1Factory.c
 
 OBJ = $(SRC:.c=.o)
 
-OUT = lib6343D68AB28A4F8FABE90F23A040FC88.a
+OUT = lib1F5DF16EE1BF43B999A434ED38FE8F3A.a
 OUT_DIR = ..\..\..\BuildFiles\K210\StaticDebug
 
 # include directories

@@ -1,5 +1,5 @@
-ifeq ($(TARGET), 1)
-OUT_TARGET = lib6343D68AB28A4F8FABE90F23A040FC88.a
+﻿ifeq ($(TARGET), 1)
+OUT_TARGET = lib1F5DF16EE1BF43B999A434ED38FE8F3A.a
 ifeq ($(DEBUG), 1)
 CONFIG_TARGET = StaticDebug
 CCFLAGS_TARGET = -Wall -O3 -g -DECO_LIB
@@ -10,7 +10,7 @@ CCFLAGS_TARGET = -O3 -DECO_LIB
 LDFLAGS_TARGET =
 endif
 else
-OUT_TARGET = 6343D68AB28A4F8FABE90F23A040FC88.so
+OUT_TARGET = 1F5DF16EE1BF43B999A434ED38FE8F3A.so
 ifeq ($(DEBUG), 1)
 CONFIG_TARGET = DynamicDebug
 CCFLAGS_TARGET = -Wall -O3 -fPIC -g -DECO_DLL
@@ -24,16 +24,16 @@ endif
 
 # source files.
 SRC = \
-../../../SourceFiles/CBucketSort.c \
-../../../SourceFiles/CBucketSortFactory.c
+../../../SourceFiles/CEcoLab1.c \
+../../../SourceFiles/CEcoLab1Factory.c
 
 # include directories
 INCLUDES = \
 -I ../../../HeaderFiles \
 -I ../../../SharedFiles \
--I ../../../../Eco.Core1/SharedFiles \
--I ../../../../Eco.InterfaceBus1/SharedFiles \
--I ../../../../Eco.MemoryManager1/SharedFiles
+-I $(ECO_FRAMEWORK)/Eco.Core1/SharedFiles \
+-I $(ECO_FRAMEWORK)/Eco.InterfaceBus1/SharedFiles \
+-I $(ECO_FRAMEWORK)/Eco.MemoryManager1/SharedFiles
 
 OBJ = $(SRC:.c=.o)
 

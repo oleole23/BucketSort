@@ -1,4 +1,4 @@
-ifeq ($(OS), Windows_NT)
+﻿ifeq ($(OS), Windows_NT)
 	#WINDOWS USE THESE DEFINITIONS
 	RM = -del /q /f
 	SLASH = \\
@@ -21,12 +21,12 @@ INC = \
 
 # source files.
 SRC = \
-..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CBucketSort.c \
-..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CBucketSortFactory.c
+..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CEcoLab1.c \
+..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CEcoLab1Factory.c
 
 OBJ = $(SRC:.c=.o)
 
-OUT = lib6343D68AB28A4F8FABE90F23A040FC88.a
+OUT = lib1F5DF16EE1BF43B999A434ED38FE8F3A.a
 OUT_DIR = ..$(SLASH)..$(SLASH)..$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease
 
  

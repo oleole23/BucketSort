@@ -1,4 +1,4 @@
-//
+﻿//
 //  AppDelegate.h
 //  Eco.DemoCalculator1
 //
