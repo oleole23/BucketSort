@@ -100,16 +100,16 @@ void CharArrayPrint(void* arr, size_t n){
 	printf("\n");
 }
 
-void IntTest(IEcoLab1 *pIEcoLab1, IEcoMemoryAllocator1 *pIMem, size_t n, int16_t max_val){
+void IntTest(IEcoLab1 *pIEcoLab1, IEcoMemoryAllocator1 *pIMem, size_t n, int16_t min_val, int16_t max_val){
 	int16_t* array_bs;
 	int16_t* array_qs;
 	int16_t i;
 	clock_t start_bs;
 	clock_t end_bs;
-	double cpu_time_bs;
+	double time_bs;
 	clock_t start_qs;
 	clock_t end_qs;
-	double cpu_time_qs;
+	double time_qs;
 
     /* Выделение блока памяти */
 	array_bs = (int16_t *)pIMem->pVTbl->Alloc(pIMem, n*sizeof(int16_t));
@@ -118,25 +118,29 @@ void IntTest(IEcoLab1 *pIEcoLab1, IEcoMemoryAllocator1 *pIMem, size_t n, int16_t
 	/* Заполнение блока памяти */
 	srand(time(NULL));
     for (i = 0; i < n; i++){
-        array_bs[i] = 0 + rand() % (50 - 0 +1);
+        array_bs[i] = min_val + rand() % (max_val - min_val +1);
 		array_qs[i] = array_bs[i];
     }
 
-	IntArrayPrint(array_bs, n);
+	//IntArrayPrint(array_bs, n);
+	
+	if (min_val < 0 && -min_val > max_val){
+		max_val = -min_val; 
+	}
 
 	start_bs = clock();
     pIEcoLab1->pVTbl->BucketSort(pIEcoLab1, array_bs, n, max_val, IntComparator);
 	end_bs = clock();
-    cpu_time_bs = ((double) (end_bs - start_bs)*1000);
+    time_bs = ((double) (end_bs - start_bs)*1000);
 
 	start_qs = clock();
 	qsort(array_qs, n, sizeof(int16_t), IntComparator);
 	end_qs = clock();
-    cpu_time_qs = ((double) (end_qs - start_qs)*1000);
+    time_qs = ((double) (end_qs - start_qs)*1000);
 
-	IntArrayPrint(array_bs, n);
-	printf("Time taken by Bucket Sort: %f ms\n", cpu_time_bs);
-    printf("Time taken by Quick Sort: %f ms\n", cpu_time_qs);
+	//IntArrayPrint(array_bs, n);
+	printf("Time Bucket Sort: %f ms\n", time_bs);
+    printf("Time Quick Sort: %f ms\n", time_qs);
 
 	
     /* Освобождение блока памяти */
@@ -237,16 +241,14 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-
-
-
-	IntTest(pIEcoLab1, pIMem, 10, 1000);
-	//DoubleTest(pIEcoLab1, pIMem, 10, 1000);
-
-
-
-
-
+	/*printf("n: 1000 max: 100\n");
+	IntTest(pIEcoLab1, pIMem, 1000, 0, 100);
+	printf("n: 1000 max: 1000\n");
+	IntTest(pIEcoLab1, pIMem, 1000, 0, 1000);
+	printf("n: 10000 max: 1000\n");
+	IntTest(pIEcoLab1, pIMem, 10000, 0, 1000);
+	printf("n: 10000 max: 10000\n");
+	IntTest(pIEcoLab1, pIMem, 10000, 0, 10000);*/
 
 Release:
 

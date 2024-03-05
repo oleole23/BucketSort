@@ -141,11 +141,12 @@ int16_t ECOCALLMETHOD CEcoLab1_BucketSort(/* in */ struct IEcoLab1* me, /* in */
     }
 
 	max_val++;
-
+	
     for (i = 0; i < max_val; ++i) {
         positive_bucket_sizes[i] = 0;
         negative_bucket_sizes[i] = 0;
     }
+
     for (j = 0; j < n; ++j) {
         index = array[j];
 		if (index >= 0) {
@@ -174,7 +175,7 @@ int16_t ECOCALLMETHOD CEcoLab1_BucketSort(/* in */ struct IEcoLab1* me, /* in */
         }
 	}
 
-	for (s = max_val - 1; s != SIZE_MAX; --s) {
+	for (s = max_val - 1; s != 0; --s) {
 		if (negative_bucket_sizes[s] > 0) {
             int16_t* negative_bucket = negative_buckets[s];
             size_t negative_size = negative_bucket_sizes[s];
